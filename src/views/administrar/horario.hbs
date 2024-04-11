@@ -1,0 +1,1321 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 74rem">
+    <div class="card-body">
+      {{#if horario}}
+        {{#if user.horario}} <!--Se utiliza la condición de que si user.horario (Si tiene algo en horario 'user') existe, entonces cargara este bloque -->
+              <img
+            src="/pictures/sigeca_full.png"
+            class="img-fluid mt-3 mb-3"
+            alt="SIGECA"
+            width="440"
+            height="240"
+          />
+          <h4 class="float-end">
+            <span class="badge text-bg-success g-2">{{horario.trimestre}}</span>
+            <span class="badge text-bg-success g-2">{{horario.division}}</span>
+          </h4>
+          <form action="/horario/buscar-horario" method="POST">
+            <div class="form-group">
+              <div class="input-group w-50 mx-auto">
+                <select class="form-select w-50 text-center" name="trimestre">
+                  <option selected disabled value="{{horario.trimestre}}">
+                    {{horario.trimestre}}
+                  </option>
+                  {{#each horarios}}
+                    <option value="{{trimestre}}">{{trimestre}}</option>
+                  {{/each}}
+                </select>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Buscar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          {{#if sinClases}}
+            <div class="alert alert-warning mt-3 mb-2 w-50 mx-auto" role="alert">
+              No hay clases agregadas para el trimestre
+              {{horario.trimestre}}
+            </div>
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                  Nueva Clase
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <img
+                  src="/pictures/sigeca_full.png"
+                  class="img-fluid mt-3 mb-3"
+                  alt="SIGECA"
+                  width="440"
+                  height="240"
+                />
+                <form action="/horario/nueva-clase" method="POST">
+                  <div class="mt-2">
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGridTrim"
+                        name="trimestre"
+                      >
+                        <option selected disabled>Selecciona el trimestre</option>
+                        {{#each horarios}}
+                          <option value="{{trimestre}}">{{trimestre}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGridTrim">Trimestre</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid"
+                        name="uea"
+                      >
+                        <option selected disabled>Selecciona la UEA</option>
+                        {{#each uea}}
+                          <option value="{{uea}}">{{uea}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid">UEA</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid2"
+                        name="profesor"
+                      >
+                        <option selected disabled>Selecciona el profesor</option>
+                        {{#each profesores}}
+                          <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid2">Profesor</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid2"
+                        name="grupo"
+                      >
+                        <option selected disabled>Selecciona el grupo</option>
+                        {{#each grupos}}
+                          <option value="{{grupo}}">{{grupo}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid2">Grupo</label>
+                    </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary w-50 mt-3" type="submit">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          {{else}}
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                  Nueva Clase
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <img
+                  src="/pictures/sigeca_full.png"
+                  class="img-fluid mt-3 mb-3"
+                  alt="SIGECA"
+                  width="440"
+                  height="240"
+                />
+                <form action="/horario/nueva-clase" method="POST">
+                  <div class="mt-2">
+
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary w-50 mt-3" type="submit">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <table class="table table-striped mt-3 table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Grupo</th>
+                  <th scope="col">Clave</th>
+                  <th scope="col">UEA</th>
+                  <th scope="col">Profesor</th>
+                  <th scope="col">Lunes</th>
+                  <th scope="col">Martes</th>
+                  <th scope="col">Miercoles</th>
+                  <th scope="col">Jueves</th>
+                  <th scope="col">Viernes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each horario.clase}}
+                  <tr>
+                    <th>{{grupo}}</th>
+                    <th>{{clave}}</th>
+                    <td>{{uea}}</td>
+                    <td>{{profesor}}</td>
+                    {{#if lunes}}
+                      <td>
+                        <p>{{lunes.salon}}</p>
+                        <p>{{lunes.horario_inicio}}-{{lunes.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if martes}}
+                      <td>
+                        <p>{{martes.salon}}</p>
+                        <p>{{martes.horario_inicio}}-{{martes.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if miercoles}}
+                      <td>
+                        <p>{{miercoles.salon}}</p>
+                        <p
+                        >{{miercoles.horario_inicio}}-{{miercoles.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if jueves}}
+                      <td>
+                        <p>{{jueves.salon}}</p>
+                        <p>{{jueves.horario_inicio}}-{{jueves.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if viernes}}
+                      <td>
+                        <p>{{viernes.salon}}</p>
+                        <p>{{viernes.horario_inicio}}-{{viernes.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{/if}}
+        {{else}}
+            <img
+            src="/pictures/sigeca_full.png"
+            class="img-fluid mt-3 mb-3"
+            alt="SIGECA"
+            width="440"
+            height="240"
+          />
+          <h4 class="float-end">
+            <span class="badge text-bg-success g-2">{{horario.trimestre}}</span>
+            <span class="badge text-bg-success g-2">{{horario.division}}</span>
+          </h4>
+          <form action="/horario/buscar-horario" method="POST">
+            <div class="form-group">
+              <div class="input-group w-50 mx-auto">
+                <select class="form-select w-50 text-center" name="trimestre">
+                  <option selected disabled value="{{horario.trimestre}}">
+                    {{horario.trimestre}}
+                  </option>
+                  {{#each horarios}}
+                    <option value="{{trimestre}}">{{trimestre}}</option>
+                  {{/each}}
+                </select>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Buscar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          {{#if sinClases}}
+            <div class="alert alert-warning mt-3 mb-2 w-50 mx-auto" role="alert">
+              No hay clases agregadas para el trimestre
+              {{horario.trimestre}}
+            </div>
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btn btn-success mt-3 g-2 me-3"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasExample"
+                  aria-controls="offcanvasExample"
+                >
+                  Nueva Clase
+                </button>
+                <a
+                  href="/dashboard"
+                  class="btn btn-danger mt-3 g-2 me-3"
+                >Volver</a>
+              </div>
+            </div>
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                  Nueva Clase
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <img
+                  src="/pictures/sigeca_full.png"
+                  class="img-fluid mt-3 mb-3"
+                  alt="SIGECA"
+                  width="440"
+                  height="240"
+                />
+                <form action="/horario/nueva-clase" method="POST">
+                  <div class="mt-2">
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGridTrim"
+                        name="trimestre"
+                      >
+                        <option selected disabled>Selecciona el trimestre</option>
+                        {{#each horarios}}
+                          <option value="{{trimestre}}">{{trimestre}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGridTrim">Trimestre</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid"
+                        name="uea"
+                      >
+                        <option selected disabled>Selecciona la UEA</option>
+                        {{#each uea}}
+                          <option value="{{uea}}">{{uea}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid">UEA</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid2"
+                        name="profesor"
+                      >
+                        <option selected disabled>Selecciona el profesor</option>
+                        {{#each profesores}}
+                          <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid2">Profesor</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid2"
+                        name="grupo"
+                      >
+                        <option selected disabled>Selecciona el grupo</option>
+                        {{#each grupos}}
+                          <option value="{{grupo}}">{{grupo}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid2">Grupo</label>
+                    </div>
+                    <div class="form-check mt-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Lunes"
+                        name="lunes"
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Lunes
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_lunes"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTime"
+                              placeholder="Horario de inicio"
+                              name="horario_inicio_lunes"
+                            />
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTimeFin"
+                              placeholder="Horario de fin"
+                              name="horario_fin_lunes"
+                            />
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Martes"
+                        name="martes"
+                        id="flexCheckDefault1"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault1">
+                        Martes
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_martes"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTime"
+                              placeholder="Horario de inicio"
+                              name="horario_inicio_martes"
+                            />
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTimeFin"
+                              placeholder="Horario de fin"
+                              name="horario_fin_martes"
+                            />
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Miercoles"
+                        name="miercoles"
+                        id="flexCheckDefault2"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault2">
+                        Miercoles
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_miercoles"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          <option value="1">A-1</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTime"
+                              placeholder="Horario de inicio"
+                              name="horario_inicio_miercoles"
+                            />
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTimeFin"
+                              placeholder="Horario de fin"
+                              name="horario_fin_miercoles"
+                            />
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Jueves"
+                        name="jueves"
+                        id="flexCheckDefault3"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault3">
+                        Jueves
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_jueves"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTime"
+                              placeholder="Horario de inicio"
+                              name="horario_inicio_jueves"
+                            />
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTimeFin"
+                              placeholder="Horario de fin"
+                              name="horario_fin_jueves"
+                            />
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Viernes"
+                        name="viernes"
+                        id="flexCheckDefault4"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault4">
+                        Viernes
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_viernes"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTime"
+                              placeholder="Horario de inicio"
+                              name="horario_inicio_viernes"
+                            />
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control"
+                              id="floatingTimeFin"
+                              placeholder="Horario de fin"
+                              name="horario_fin_viernes"
+                            />
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary w-50 mt-3" type="submit">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          {{else}}
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btn btn-success mt-3 g-2 me-3"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasExample"
+                  aria-controls="offcanvasExample"
+                >
+                  Nueva Clase
+                </button>
+                <a
+                  href="/dashboard"
+                  class="btn btn-danger mt-3 g-2 me-3"
+                >Volver</a>
+              </div>
+            </div>
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                  Nueva Clase
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <img
+                  src="/pictures/sigeca_full.png"
+                  class="img-fluid mt-3 mb-3"
+                  alt="SIGECA"
+                  width="440"
+                  height="240"
+                />
+                <form action="/horario/nueva-clase" method="POST">
+                  <div class="mt-2">
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGridTrim"
+                        name="trimestre"
+                      >
+                        <option selected disabled>Selecciona el trimestre</option>
+                        {{#each horarios}}
+                          <option value="{{trimestre}}">{{trimestre}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGridTrim">Trimestre</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid"
+                        name="uea"
+                      >
+                        <option selected disabled>Selecciona la UEA</option>
+                        {{#each uea}}
+                          <option value="{{uea}}">{{uea}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid">UEA</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid2"
+                        name="grupo"
+                      >
+                        <option selected disabled>Selecciona el grupo</option>
+                        {{#each grupos}}
+                          <option value="{{grupo}}">{{grupo}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid2">Grupo</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <select
+                        class="form-select text-center"
+                        id="floatingSelectGrid2"
+                        name="profesor"
+                      >
+                        <option selected disabled>Selecciona el profesor</option>
+                        {{#each profesores}}
+                          <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                      </select>
+                      <label for="floatingSelectGrid2">Profesor</label>
+                    </div>
+                    <div class="form-check mt-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Lunes"
+                        name="lunes"
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Lunes
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_lunes"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTime" name="horario_inicio_lunes">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTimeFin" name="horario_fin_lunes">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Martes"
+                        name="martes"
+                        id="flexCheckDefault1"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault1">
+                        Martes
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_martes"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTime" name="horario_inicio_martes">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTimeFin" name="horario_fin_martes">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Miercoles"
+                        name="miercoles"
+                        id="flexCheckDefault2"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault2">
+                        Miercoles
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_miercoles"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          <option value="1">A-2</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTime" name="horario_inicio_miercoles">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTimeFin" name="horario_fin_miercoles">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Jueves"
+                        name="jueves"
+                        id="flexCheckDefault3"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault3">
+                        Jueves
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_jueves"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTime" name="horario_inicio_jueves">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTimeFin" name="horario_fin_jueves">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="Viernes"
+                        name="viernes"
+                        id="flexCheckDefault4"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault4">
+                        Viernes
+                      </label>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select text-center"
+                          id="floatingSelectGrid3"
+                          name="salon_viernes"
+                        >
+                          <option selected disabled>Selecciona el salón</option>
+                          {{#each salones}}
+                            <option value="{{salon}}">{{salon}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid3">Salón</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTime" name="horario_inicio_viernes">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTime">Inicio</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <select class="form-control" id="floatingTimeFin" name="horario_fin_viernes">
+                              <option value="08:00">08:00 AM</option>
+                              <option value="08:30">08:30 AM</option>
+                              <option value="09:00">09:00 AM</option>
+                              <option value="09:30">09:30 AM</option>
+                              <option value="10:00">10:00 AM</option>
+                              <option value="10:30">10:30 AM</option>
+                              <option value="11:00">11:00 AM</option>
+                              <option value="11:30">11:30 AM</option>
+                              <option value="12:00">12:00 PM</option>
+                              <option value="12:30">12:30 PM</option>
+                              <option value="13:00">01:00 PM</option>
+                              <option value="13:30">01:30 PM</option>
+                              <option value="14:00">02:00 PM</option>
+                              <option value="14:30">02:30 PM</option>
+                              <option value="15:00">03:00 PM</option>
+                              <option value="15:30">03:30 PM</option>
+                              <option value="16:00">04:00 PM</option>
+                              <option value="16:30">04:30 PM</option>
+                              <option value="17:00">05:00 PM</option>
+                              <option value="17:30">05:30 PM</option>
+                              <option value="18:00">06:00 PM</option>
+                              <option value="18:30">06:30 PM</option>
+                              <option value="19:00">07:00 PM</option>
+                              <option value="19:30">07:30 PM</option>
+                              <option value="20:00">08:00 PM</option>
+                            </select>
+                            <label for="floatingTimeFin">Final</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary w-50 mt-3" type="submit">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <table class="table table-striped mt-3 table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Grupo</th>
+                  <th scope="col">Clave</th>
+                  <th scope="col">UEA</th>
+                  <th scope="col">Profesor</th>
+                  <th scope="col">Lunes</th>
+                  <th scope="col">Martes</th>
+                  <th scope="col">Miercoles</th>
+                  <th scope="col">Jueves</th>
+                  <th scope="col">Viernes</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each horario.clase}}
+                  <tr>
+                    <th>{{grupo}}</th>
+                    <th>{{clave}}</th>
+                    <td>{{uea}}</td>
+                    <td>{{profesor}}</td>
+                    {{#if lunes}}
+                      <td>
+                        <p>{{lunes.salon}}</p>
+                        <p>{{lunes.horario_inicio}}-{{lunes.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if martes}}
+                      <td>
+                        <p>{{martes.salon}}</p>
+                        <p>{{martes.horario_inicio}}-{{martes.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if miercoles}}
+                      <td>
+                        <p>{{miercoles.salon}}</p>
+                        <p
+                        >{{miercoles.horario_inicio}}-{{miercoles.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if jueves}}
+                      <td>
+                        <p>{{jueves.salon}}</p>
+                        <p>{{jueves.horario_inicio}}-{{jueves.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    {{#if viernes}}
+                      <td>
+                        <p>{{viernes.salon}}</p>
+                        <p>{{viernes.horario_inicio}}-{{viernes.horario_fin}}</p>
+                      </td>
+                    {{else}}
+                      <td>
+                        <p></p>
+                        <p></p>
+                      </td>
+                    {{/if}}
+                    <td>
+                      <a
+                        href="/horario/clase-edit/{{id}}"
+                        class="btn btn-primary"
+                      ><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+                      <form
+                        action="/horario/delete-clase/{{id}}?_method=DELETE"
+                        method="POST"
+                      >
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <button class="btn btn-danger mt-3" type="submit">
+                          <i class="fa-solid fa-trash"></i>
+                          Eliminar
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{/if}}
+        {{/if}}
+      {{else}}
+        <h3>No existen horarios registrados</h3>
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="340"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

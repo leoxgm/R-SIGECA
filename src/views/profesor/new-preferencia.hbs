@@ -1,0 +1,55 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 62rem;">
+    <div class="card-body">
+      <h2>Hola, {{user.name}}</h2>
+      {{#if uea}}
+        <h5>Selecciona tus preferencias</h5>
+        <form action="/profesores/new-preferencia" method="POST">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Seleccionar</th>
+                <th scope="col">Clave</th>
+                <th scope="col">UEA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each uea}}
+                <tr>
+                  <th>
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="checkboxNoLabel{{clave}}"
+                      value={{clave}}
+                      name="uea"
+                      aria-label="check_{{clave}}"
+                    />
+                  </th>
+                  <td>{{clave}}</td>
+                  <td>{{uea}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <div class="form-group">
+            <button class="btn btn-success w-50 mt-3" type="submit">
+              Guardar preferencias
+            </button>
+          </div>
+        </form>
+        <a href="/profesores" class="btn btn-primary mt-3 g-2 me-3">Volver</a>
+      {{else}}
+        <p>No existen UEAs registradas, hablar con el administrador.</p>
+        <a href="/profesores" class="btn btn-primary mt-3 g-2 me-3">Volver</a>
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="340"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

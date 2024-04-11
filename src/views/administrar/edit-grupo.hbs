@@ -1,0 +1,139 @@
+<div class="container text-center">
+  <div class="card mx-auto mt-4" style="width: 42rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Editar Grupo</h5>
+      <br />
+      <img
+          src="/pictures/sigeca_full.png"
+          class="img-fluid mt-3 mb-3"
+          alt="SIGECA"
+          width="440"
+          height="240"
+        />
+      <form action="/grupos/edit-grupo/{{edit._id}}?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        <div class="form-group">
+          <input
+            type="text"
+            name="grupo"
+            class="form-control"
+            placeholder="Grupo"
+            id="GRUPO"
+            value="{{edit.grupo}}"
+            autofocus
+          />
+        </div>
+     <div class="form-group mt-3">
+        <textarea
+            name="descripcion"
+            class="form-control"
+            placeholder="Descripción (Opcional)"
+            id="DESCRIPCION"
+        >{{edit.descripcion}}
+        </textarea>
+     <div class="row">
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDivision"
+                name="division"
+              >
+                <option value="" disabled>Selecciona</option>
+                {{#each division}}
+                  <option value="{{this.name}}" {{#if (eq this.name ../edit.division)}} selected {{/if}}>
+                  {{this.name}}
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDivision">División</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDepartamento"
+                name="departamento"
+              >
+                <option value="" disabled>Selecciona</option>
+                {{#each departamento}}
+                  <option value="{{this.departamento}}" {{#if (eq this.departamento ../edit.departamento)}} selected {{/if}}>
+                  {{this.departamento}}
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDepartamento">Departamento</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDivision"
+                name="division"
+              >
+                <option selected disabled>Selecciona</option>
+                {{#each division}}
+                  <option value="{{name}}">{{name}}</option>
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDivision">Licenciatura</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDepartamento"
+                name="salon"
+              >
+                <option selected disabled>Selecciona</option>
+                {{#each salon}}
+                  <option value="{{this.salon}}" {{#if (eq this.salon ../edit.salon)}} selected {{/if}}>
+                  {{this.salon}}
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDepartamento">Salón</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-floating mt-3">
+          <select
+            class="form-select text-center"
+            id="floatingSelectGrid"
+            name="uea"
+          >
+            <option selected disabled>Selecciona</option>
+            {{#each uea}}
+              <option value="{{this.uea}}" {{#if (eq this.uea ../edit.uea)}} selected {{/if}}>
+                  {{this.uea}}
+            {{/each}}
+          </select>
+          <label for="floatingSelectGrid">UEA</label>
+        </div>
+
+        <div class="btn-group mt-3">
+          <input type="radio" class="btn-check" name="modalidad" id="Presencial" value="Presencial" autocomplete="off" {{#if (eq edit.modalidad "Presencial")}}checked{{/if}}>
+          <label class="btn btn-outline-secondary" for="Presencial">Presencial</label>
+
+          <input type="radio" class="btn-check" name="modalidad" id="Semi-Presencial" value="Semi-Presencial" autocomplete="off" {{#if (eq edit.modalidad "Semi-Presencial")}}checked{{/if}}>
+          <label class="btn btn-outline-secondary" for="Semi-Presencial">Semi-Presencial</label>
+
+          <input type="radio" class="btn-check" name="modalidad" id="Virtual" value="Virtual" autocomplete="off" {{#if (eq edit.modalidad "Virtual")}}checked{{/if}}>
+          <label class="btn btn-outline-secondary" for="Virtual">Virtual</label>
+
+          <input type="radio" class="btn-check" name="modalidad" id="Movilidad" value="Movilidad" autocomplete="off" {{#if (eq edit.modalidad "Movilidad")}}checked{{/if}}>
+          <label class="btn btn-outline-secondary" for="Movilidad">Movilidad</label>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success w-50 mt-3" type="submit">
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

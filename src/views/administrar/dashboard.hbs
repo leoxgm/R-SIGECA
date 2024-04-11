@@ -1,0 +1,136 @@
+<div class="container-fluid d-flex text-center">
+  <div
+    class="card mx-auto text-center justify-content-center flex-fill"
+    style="width:72rem;"
+  >
+    <div class="card-body">
+      {{#if horario}}
+        <div
+          class="btn-group g-2 mt-3 mb-3"
+          role="group"
+          aria-label="Basic example"
+        >
+          {{#if director}}
+            <a class="btn btn-primary" href="/nuevo-horario">Nuevo Horario</a>
+            <a class="btn btn-primary" href="/horario">Horarios</a>
+            <a class="btn btn-primary" href="/dashboard/nueva-uea">Nueva UEA</a>
+            <a class="btn btn-primary" href="/dashboard/all-uea">Todas las UEA</a>
+            <a class="btn btn-primary" href="/salones/nuevo-salon">Nuevo Salón</a>
+            <a class="btn btn-primary" href="/salones">Todos los Salones</a>
+            <a class="btn btn-primary" href="/dashboard/nuevo-profesor">Nuevo
+              Profesor</a>
+            <a class="btn btn-primary" href="/dashboard/all-profesor">Todos los
+              Profesores</a>
+            <a
+              class="btn btn-primary"
+              href="/dashboard/nuevo-departamento"
+            >Nuevo Departamento</a>
+            <a class="btn btn-primary" href="/dashboard/all-departamentos">Todos
+              los Departamentos</a>
+          {{else if departamento}}
+            <div style="text-align: center;">
+              <a class="btn btn-secondary" href="/horario">Horarios</a>
+              <a class="btn btn-secondary" href="/dashboard/all-uea">Todas las
+                UEA</a>
+              <a class="btn btn-secondary" href="/dashboard/all-profesor">Todos
+                los Profesores</a>
+            </div>
+
+          {{else}}
+            <a class="btn btn-primary" href="/nuevo-horario">Nuevo Horario</a>
+            <a class="btn btn-primary" href="/horario">Horarios</a>
+            <a class="btn btn-primary" href="/dashboard/nueva-uea">Nueva UEA</a>
+            <a class="btn btn-primary" href="/dashboard/all-uea">Todas las UEA</a>
+            <a class="btn btn-primary" href="/salones/nuevo-salon">Nuevo Salón</a>
+            <a class="btn btn-primary" href="/salones">Todos los Salones</a>
+            <a class="btn btn-primary" href="/dashboard/nuevo-profesor">Nuevo
+              Profesor</a>
+            <a class="btn btn-primary" href="/dashboard/all-profesor">Todos los
+              Profesores</a>
+            <a
+              class="btn btn-primary"
+              href="/dashboard/nuevo-departamento"
+            >Nuevo Departamento</a>
+            <a class="btn btn-primary" href="/dashboard/all-departamentos">Todos
+              los Departamentos</a>
+            <a class="btn btn-primary" href="/dashboard/nuevo-director">Nuevo
+              Director</a>
+            <a class="btn btn-primary" href="/dashboard/all-director">Todos los
+              Directores</a>
+          {{/if}}
+        </div>
+        <div style="text-align: center;">
+          <img
+            src="/pictures/sigeca_full.png"
+            alt="SIGECA"
+            style="max-width: 100%; height: auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: transparent;"
+          />
+        </div>
+
+      {{else}}
+        <div class="alert alert-warning" role="alert">
+          No existen horarios asignados
+        </div>
+        <div
+          class="btn-group g-2 mt-3 mb-3"
+          role="group"
+          aria-label="Basic example"
+        >
+          {{#if director}}
+            <a class="btn btn-primary" href="/nuevo-horario">Nuevo Horario</a>
+            <a class="btn btn-primary" href="/horario">Horarios</a>
+            <a class="btn btn-primary" href="/dashboard/nueva-uea">Nueva UEA</a>
+            <a class="btn btn-primary" href="/dashboard/all-uea">Todas las UEA</a>
+            <a class="btn btn-primary" href="/salones/nuevo-salon">Nuevo Salón</a>
+            <a class="btn btn-primary" href="/salones">Todos los Salones</a>
+            <a class="btn btn-primary" href="/dashboard/nuevo-profesor">Nuevo
+              Profesor</a>
+            <a class="btn btn-primary" href="/dashboard/all-profesor">Todos los
+              Profesores</a>
+            <a
+              class="btn btn-primary"
+              href="/dashboard/nuevo-departamento"
+            >Nuevo Departamento</a>
+            <a class="btn btn-primary" href="/dashboard/all-departamentos">Todos
+              los Departamentos</a>
+
+          {{/if}}
+          {{#if departamento}}
+            <a class="btn btn-primary" href="/horario">Horarios</a>
+            <a class="btn btn-primary" href="/dashboard/all-uea">Todas las UEA</a>
+            <a class="btn btn-primary" href="/dashboard/all-profesor">Todos los
+              Profesores</a>
+          {{else}}
+            <a class="btn btn-primary" href="/nuevo-horario">Nuevo Horario</a>
+            <a class="btn btn-primary" href="/horario">Horarios</a>
+            <a class="btn btn-primary" href="/dashboard/nueva-uea">Nueva UEA</a>
+            <a class="btn btn-primary" href="/dashboard/all-uea">Todas las UEA</a>
+            <a class="btn btn-primary" href="/salones/nuevo-salon">Nuevo Salón</a>
+            <a class="btn btn-primary" href="/salones">Todos los Salones</a>
+            <a class="btn btn-primary" href="/dashboard/nuevo-profesor">Nuevo
+              Profesor</a>
+            <a class="btn btn-primary" href="/dashboard/all-profesor">Todos los
+              Profesores</a>
+            <a
+              class="btn btn-primary"
+              href="/dashboard/nuevo-departamento"
+            >Nuevo Departamento</a>
+            <a class="btn btn-primary" href="/dashboard/all-departamentos">Todos
+              los Departamentos</a>
+            <a class="btn btn-primary" href="/dashboard/nuevo-director">Nuevo
+              Director</a>
+            <a class="btn btn-primary" href="/dashboard/all-director">Todos los
+              Directores</a>
+          {{/if}}
+        </div>
+        <img
+          src="/pictures/sigeca_full.png"
+          class="img-fluid mt-3 mb-3"
+          alt="SIGECA"
+          width="640"
+          height="480"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

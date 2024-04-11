@@ -1,0 +1,410 @@
+<div>
+  <div
+    class="card mx-auto mt-5 mb-5 text-center justify-content-center"
+    style="width: 36rem;"
+  >
+    <img
+      src="../pictures/cbi_logo.png"
+      class="logo mx-auto card-img-top w-50 d-block m-4"
+    />
+    <div class="card-body bg-white w-100">
+      {{#if user}}{{else}}
+        <div class="mt-4 mb-4 text-center m-4 justify-content-center">
+          <ul
+            class="nav nav-tabs w-100 justify-content-center pb-0 mb-3"
+            id="mytab"
+            role="tablist"
+          >
+            <li class="nav-item" role="presentation">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="signup_admin-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#signup_admin-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="signup_admin-tab-pane"
+                    aria-selected="true"
+                  >Administrativo</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="signup_profesor-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#signup_profesor-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="signup_profesor-tab-pane"
+                    aria-selected="false"
+                  >Profesor</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="signup_division-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#division-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="division-tab-pane"
+                    aria-selected="false"
+                  >Division</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="signup_director-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#signup_director-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="director-tab-pane"
+                    aria-selected="false"
+                  >Director</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="signup_admin-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="signup_admin-tab"
+                  tabindex="0"
+                >
+                  <form action="/users/signup/departamento" method="POST">
+                    <div class="row g-2 mt-3">
+                      <div class="col-7">
+                        <div class="form-floating">
+                          <input
+                            type="text"
+                            class="form-control border-primary"
+                            id="floatingInputGrid"
+                            placeholder="Nombre"
+                            name="departamento"
+                            value="example"
+                          />
+                          <label for="floatingInputGrid">Departamento</label>
+                        </div>
+                      </div>
+                      <div class="col-5">
+                        <div class="form-floating">
+                          <select
+                            class="form-select border-primary text-center"
+                            id="floatingSelectGrid"
+                            name="division"
+                          >
+                            <option selected disabled>Selecciona</option>
+                            {{#each divisiones}}
+                              <option value="{{name}}">{{name}}</option>
+                            {{/each}}
+                          </select>
+                          <label for="floatingSelectGrid">División</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <input
+                        type="password"
+                        class="form-control border-primary"
+                        id="floatingPassword"
+                        placeholder="Password"
+                        name="password"
+                      />
+                      <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                      <input
+                        type="password"
+                        class="form-control border-primary"
+                        id="floatingConfirmPassword"
+                        placeholder="confirm_Password"
+                        name="confirm_password"
+                      />
+                      <label for="floatingConfirmPassword">Confirmar contraseña</label>
+                    </div>
+                    <div class="mt-3 mb-3">
+                      <button type="submit" class="btn btn-primary w-100">
+                        Registro
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="signup_profesor-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="signup_profesor-tab"
+                  tabindex="0"
+                >
+                  <div class="container mt-3 text-center">
+                    <form action="/users/signup" method="POST">
+                      <div class="row g-2">
+                        <div class="col-5">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control border-primary"
+                              id="floatingNameProfesorInputGrid"
+                              placeholder="Nombre"
+                              value=""
+                              name="name"
+                            />
+                            <label
+                              for="floatingNameProfesorInputGrid"
+                            >Nombre</label>
+                          </div>
+                          <div class="form-floating mt-3">
+                            <input
+                              type="text"
+                              class="form-control border-primary"
+                              id="floatingNumEconomicoInputGrid"
+                              placeholder="Número económico"
+                              value=""
+                              name="num_economic"
+                            />
+                            <label for="floatingNumEconomicoInputGrid">Número
+                              económico</label>
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="form-floating">
+                            <input
+                              type="email"
+                              class="form-control border-primary"
+                              id="floatingProfesorInputGrid"
+                              placeholder="Correo eléctronico"
+                              value=""
+                              name="email"
+                            />
+                            <label for="floatingProfesorInputGrid">Correo
+                              eléctronico</label>
+                          </div>
+                          <div class="form-floating mt-3">
+                            <input
+                              type="tel"
+                              class="form-control border-primary"
+                              id="floatingNumTelInputGrid"
+                              placeholder="Número telefónico"
+                              value=""
+                              name="telefono"
+                            />
+                            <label for="floatingNumTelInputGrid">Número
+                              telefónico</label>
+                          </div>
+                        </div>
+                        <div class="form-floating mt-3">
+                          <input
+                            type="password"
+                            class="form-control border-primary"
+                            id="floatingPassword"
+                            placeholder="Password"
+                            name="password"
+                          />
+                          <label for="floatingPassword">Contraseña</label>
+                        </div>
+                        <div class="form-floating mt-3">
+                          <input
+                            type="password"
+                            class="form-control border-primary"
+                            id="floatingConfirmPassword"
+                            placeholder="confirm_Password"
+                            name="confirm_password"
+                          />
+                          <label for="floatingConfirmPassword">Confirmar
+                            contraseña</label>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control border-primary"
+                              id="floatingTime"
+                              placeholder="Horario de contratación"
+                              name="horario_inicio"
+                            />
+                            <label for="floatingTime">Horario de contratación</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mt-3">
+                            <input
+                              type="time"
+                              class="form-control border-primary"
+                              id="floatingTimeFin"
+                              placeholder="Horario de contratación"
+                              name="horario_fin"
+                            />
+                            <label for="floatingTimeFin">Horario de contratación
+                              (Fin)</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-3">
+                        <select
+                          class="form-select border-primary text-center"
+                          aria-placeholder="Departamento"
+                          name="departamento"
+                        >
+                          <option selected disabled>Departamento</option>
+                          {{#each departamento}}
+                            <option value="{{departamento}}">
+                              {{departamento}}
+                            </option>
+                          {{/each}}
+                        </select>
+                      </div>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select border-primary text-center"
+                          id="floatingSelectGrid"
+                          name="division"
+                        >
+                          <option selected disabled>Selecciona</option>
+                          {{#each divisiones}}
+                            <option value="{{name}}">{{name}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid">División</label>
+                      </div>
+                      <div class="mt-3 mb-3">
+                        <button type="submit" class="btn btn-primary w-100">
+                          Registro
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade mt-3 mb-4"
+                  id="division-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="division-tab"
+                  tabindex="0"
+                >
+                  <form action="/users/signup/division" method="POST">
+                    <div class="form-floating mt-3">
+                      <input
+                        type="text"
+                        class="form-control border-primary text-center"
+                        id="floatingName"
+                        placeholder="Nombre"
+                        name="name"
+                      />
+                      <label for="floatingName">Nombre</label>
+                    </div>
+                    <div class="mt-3 mb-3">
+                      <button type="submit" class="btn btn-primary w-100">
+                        Registro
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="signup_director-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="signup_director-tab"
+                  tabindex="0"
+                >
+                  <div class="container mt-3 text-center">
+                    <form action="/users/signup/director" method = "POST">
+                      <div class="row g-2">
+                        <div class="col-5">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control border-primary"
+                              id="floatingNameDirectorInputGrid"
+                              placeholder="Nombre"
+                              value=""
+                              name="director"
+                            />
+                            <label
+                              for="floatingNameDirectorInputGrid"
+                            >Nombre</label>
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="form-floating">
+                            <input
+                              type="email"
+                              class="form-control border-primary"
+                              id="floatingDirectorInputGrid"
+                              placeholder="Correo eléctronico"
+                              value=""
+                              name="correo"
+                            />
+                            <label for="floatingDirectorInputGrid">Correo
+                              eléctronico</label>
+                          </div>
+                        </div>
+                        <div class="form-floating mt-3">
+                          <input
+                            type="password"
+                            class="form-control border-primary"
+                            id="floatingPassword"
+                            placeholder="Password"
+                            name="password"
+                          />
+                          <label for="floatingPassword">Contraseña</label>
+                        </div>
+                        <div class="form-floating mt-3">
+                          <input
+                            type="password"
+                            class="form-control border-primary"
+                            id="floatingConfirmPassword"
+                            placeholder="confirm_Password"
+                            name="confirm_password"
+                          />
+                          <label for="floatingConfirmPassword">Confirmar
+                            contraseña</label>
+                        </div>
+                      </div>
+                      <div class="mt-3">
+                        <select
+                          class="form-select border-primary text-center"
+                          aria-placeholder="Departamento"
+                          name="departamento"
+                        >
+                          <option selected disabled>Departamento</option>
+                          {{#each departamento}}
+                            <option value="{{departamento}}">
+                              {{departamento}}
+                            </option>
+                          {{/each}}
+                        </select>
+                      </div>
+                      <div class="form-floating mt-3">
+                        <select
+                          class="form-select border-primary text-center"
+                          id="floatingSelectGrid"
+                          name="division"
+                        >
+                          <option selected disabled>Selecciona</option>
+                          {{#each divisiones}}
+                            <option value="{{name}}">{{name}}</option>
+                          {{/each}}
+                        </select>
+                        <label for="floatingSelectGrid">División</label>
+                      </div>
+                      <div class="mt-3 mb-3">
+                        <button type="submit" class="btn btn-primary w-100">
+                          Registro
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 62rem;">
+    <div class="card-body">
+      <!-- Título del formulario -->
+      <h5>Registrar Licenciatura</h5>
+      <!-- Formulario para registrar una licenciatura -->
+      <form action="/registrar-licenciatura" method="POST">
+        <!-- Campo para el nombre de la licenciatura -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre de la Licenciatura:</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <!-- Campo para la descripción de la licenciatura -->
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción:</label>
+          <textarea class="form-control" id="descripcion" name="descripcion" rows="4"></textarea>
+        </div>
+        <!-- Campo para la cantidad de créditos -->
+        <div class="mb-3">
+          <label for="creditos" class="form-label">Créditos:</label>
+          <input type="number" class="form-control" id="creditos" name="creditos" required>
+        </div>
+        <!-- Campo para la duración de la licenciatura en años -->
+        <div class="mb-3">
+          <label for="duracion" class="form-label">Duración (en años):</label>
+          <input type="number" class="form-control" id="duracion" name="duracion" required>
+        </div>
+        <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </form>
+      <!-- Enlace para volver a la página principal -->
+      <a href="/profesores" class="btn btn-secondary mt-3">Volver</a>
+    </div>
+  </div>
+</div>

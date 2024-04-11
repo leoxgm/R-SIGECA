@@ -1,0 +1,137 @@
+<div class="container text-center">
+  <div class="card mx-auto mt-4" style="width: 42rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Nuevo grupo</h5>
+      <br />
+      <img
+          src="/pictures/sigeca_full.png"
+          class="img-fluid mt-3 mb-3"
+          alt="SIGECA"
+          width="440"
+          height="240"
+        />
+      <form
+        action="/grupos/nuevo-grupo"
+        method="POST"
+      >
+        <div class="form-group">
+          <input
+            type="text"
+            name="grupo"
+            class="form-control"
+            placeholder="Grupo"
+            id="GRUPO"
+            value=""
+            autofocus
+          />
+        </div>
+        <div class="form-group mt-3">
+          <textarea
+            name="descripcion"
+            class="form-control"
+            placeholder="Descripción (Opcional)"
+            id="DESCRIPCION"
+          ></textarea>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDivision"
+                name="division"
+              >
+                <option selected disabled>Selecciona</option>
+                {{#each division}}
+                  <option value="{{name}}">{{name}}</option>
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDivision">División</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDepartamento"
+                name="departamento"
+              >
+                <option selected disabled>Selecciona</option>
+                {{#each departamento}}
+                  <option value="{{departamento}}">{{departamento}}</option>
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDepartamento">Departamento</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDivision"
+                name="division"
+              >
+                <option selected disabled>Selecciona</option>
+                {{#each division}}
+                  <option value="{{name}}">{{name}}</option>
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDivision">Licenciatura</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mt-3">
+              <select
+                class="form-select text-center"
+                id="floatingSelectGridDepartamento"
+                name="salon"
+              >
+                <option selected disabled>Selecciona</option>
+                {{#each salon}}
+                  <option value="{{salon}}">{{salon}}</option>
+                {{/each}}
+              </select>
+              <label for="floatingSelectGridDepartamento">Salón</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-floating mt-3">
+          <select
+            class="form-select text-center"
+            id="floatingSelectGrid"
+            name="uea"
+          >
+            <option selected disabled>Selecciona</option>
+            {{#each uea}}
+              <option value="{{uea}}">{{uea}}</option>
+            {{/each}}
+          </select>
+          <label for="floatingSelectGrid">UEA</label>
+        </div>
+
+        <div class="btn-group mt-3">
+          <input type="radio" class="btn-check" name="modalidad" id="Presencial" value="Presencial" autocomplete="off" checked>
+          <label class="btn btn-outline-secondary" for="Presencial">Presencial</label>
+
+          <input type="radio" class="btn-check" name="modalidad" id="Semi-Presencial" value="Semi-Presencial" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="Semi-Presencial">Semi-Presencial</label>
+
+          <input type="radio" class="btn-check" name="modalidad" id="Virtual" value="Virtual" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="Virtual">Virtual</label>
+
+          <input type="radio" class="btn-check" name="modalidad" id="Movilidad" value="Movilidad" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="Movilidad">Movilidad</label>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary w-100 mt-3" type="submit">
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

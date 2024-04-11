@@ -1,0 +1,127 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 62rem;">
+    <div class="card-body">
+      {{#if grupos}} <!--Se utiliza la condición de que si grupos existe, entonces cargara este bloque -->
+        {{#if user.horario}} <!--Se utiliza la condición de que si user.horario (Si tiene algo en horario 'user') existe, entonces cargara este bloque -->
+          <img
+              src="/pictures/sigeca_full.png"
+              class="img-fluid mt-3 mb-3"
+              alt="SIGECA"
+              width="440"
+              height="240"
+            />
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    Grupo
+                  </th>
+                  <th scope="col">
+                    Division
+                  </th>
+                  <th scope="col">
+                    Departamento
+                  </th>
+                  <th scope="col">
+                    UEA
+                  </th>
+                  <th scope="col">
+                    Modalidad
+                  </th>
+                  <th scope="col">
+                    Salón
+                  </th>
+                  <th scope="col">Descripción (Opcional)
+                  </tr>
+              </thead>
+              <tbody>
+                {{#each grupos}}
+                  <tr>
+                    <th>{{grupo}}</th>
+                    <th>{{division}}</th>
+                    <th>{{departamento}}</th>
+                    <th>{{'Por definir'}}</th>
+                    <td>{{uea}}</td>
+                    <td>{{modalidad}}</td>
+                    <td>{{salon}}</td>
+                    <th>{{descripcion}}</th>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+        {{else}}
+          <img
+              src="/pictures/sigeca_full.png"
+              class="img-fluid mt-3 mb-3"
+              alt="SIGECA"
+              width="440"
+              height="240"
+            />
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    Grupo
+                  </th>
+                  <th scope="col">
+                    Division
+                  </th>
+                  <th scope="col">
+                    Departamento
+                  </th>
+                  <th scope="col">
+                    UEA
+                  </th>
+                  <th scope="col">
+                    Modalidad
+                  </th>
+                  <th scope="col">
+                    Salón
+                  </th>
+                  <th scope="col">Descripción (Opcional)</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each grupos}}
+                  <tr>
+                    <th>{{grupo}}</th>
+                    <th>{{division}}</th>
+                    <th>{{departamento}}</th>
+                    <td>{{uea}}</td>
+                    <td>{{modalidad}}</td>
+                    <td>{{salon}}</td>
+                    <th>{{descripcion}}</th>
+                    <td>
+                      <a href="/grupos/edit-grupo/{{_id}}"class="btn btn-primary"><i
+                          class="fa-solid fa-pen-to-square"
+                        ></i>Editar</a>
+                      <form
+                        action="/grupos/delete-grupo/{{_id}}?_method=DELETE"
+                        method="POST"
+                      >
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <button class="btn btn-danger mt-3" type="submit">
+                          <i class="fa-solid fa-trash"></i>
+                          Eliminar
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>    
+        {{/if}}      
+      {{else}}
+        <h3>No existen grupos registrados</h3>
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="340"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

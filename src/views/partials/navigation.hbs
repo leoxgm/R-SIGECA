@@ -1,0 +1,295 @@
+<nav class="navbar navbar-expand-lg py-0 navbar-light bg-light">
+  <div class="container-fluid start-0">
+    <a class="navbar-brand sticky-top" href="/">
+      <img
+        src="https://www.comunicacionsocial.uam.mx/identidaduam/images/variacion6.jpg"
+        alt="Logo"
+        width="240"
+        height="60"
+        class="d-inline-block align-text-top"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        {{#if user.horario}}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown4"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Horarios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+              <li><a class="dropdown-item" href="/horario">Horarios</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown3"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Salones
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <li><a class="dropdown-item" href="/salones">Todos los salones</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              UEA
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="/dashboard/uea">Todas las UEA</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Grupos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <li><a class="dropdown-item" href="/grupos">Todos los Grupos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Profesor
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="/dashboard/all-profesor">Todos
+                  los profesores</a></li>
+              <li><a class="dropdown-item" href="/profesores">Preferencias</a></li> <!-- Se añade una parte de preferencias pues no es posible acceder de otra forma al momento por alguna otra parte de la pagina -->
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Departamento
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a
+                  class="dropdown-item"
+                  href="/dashboard/all-departamentos"
+                >Todos los Departamentos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item me-auto">
+            <button class="ms-3 me-1 btn btn-outline-success" type="submit">
+              {{#with user}}
+                {{departamento}}
+              {{/with}}
+            </button>
+          </li>
+          <li class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <button class="ms-3 me-1 btn btn-outline-primary" type="submit">
+              {{#with user}}
+                {{division}}
+              {{/with}}
+            </button>
+          </li>
+          <li class="nav-item me-auto">
+            <a
+              class="ms-3 me-1 btn btn-outline-danger"
+              href="/users/logout"
+            >Cerrar sesión</a>
+          </li>
+        {{else if user.departamento}}
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown4"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Horarios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+              <li><a class="dropdown-item" href="/nuevo-horario">Nuevo horario</a></li>
+              <li><a class="dropdown-item" href="/horario">Horarios</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown3"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Salones
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <li><a class="dropdown-item" href="/salones/nuevo-salon">Nuevo
+                  salón</a></li>
+              <li><a class="dropdown-item" href="/salones">Todos los salones</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              UEA
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="/uea/nueva-uea">Nueva UEA</a></li>
+              <li><a class="dropdown-item" href="/uea">Todas las
+                  UEA</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Grupos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <li><a class="dropdown-item" href="/grupos/nuevo-grupo">Nuevo
+                  Grupo</a></li>
+              <li><a class="dropdown-item" href="/grupos">Todos los Grupos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Profesor
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="/dashboard/all-profesor">Todos
+                  los profesores</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Departamento
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a
+                  class="dropdown-item"
+                  href="/dashboard/nuevo-departamento"
+                >Nuevo Departamento</a></li>
+              <li><a
+                  class="dropdown-item"
+                  href="/dashboard/all-departamentos"
+                >Todos los Departamentos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item me-auto">
+            <button class="ms-3 me-1 btn btn-outline-success" type="submit">
+              {{#with user}}
+                {{departamento}}
+              {{/with}}
+            </button>
+          </li>
+          <li class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <button class="ms-3 me-1 btn btn-outline-primary" type="submit">
+              {{#with user}}
+                {{division}}
+              {{/with}}
+            </button>
+          </li>
+          <li class="nav-item me-auto">
+            <a
+              class="ms-3 me-1 btn btn-outline-danger"
+              href="/users/logout"
+            >Cerrar sesión</a>
+          </li>
+        {{else if user.director}}
+          <li class="nav-item me-auto">
+            <button class="ms-3 me-1 btn btn-outline-primary" type="submit">
+              {{#with user}}
+                {{division}}
+              {{/with}}
+            </button>
+          </li>
+          <li class="nav-item ms-auto">
+            <button
+              class="ms-3 me-3 btn btn-outline-success"
+              type="submit"
+            >{{user.director}}</button>
+          </li>
+          <li class="nav-item ms-auto">
+            <a class="ms-3 btn btn-outline-danger" href="/users/logout">Cerrar
+              sesión</a>
+          </li>
+        {{else}}
+          <!-- Habilitar o deshabilitar de acuerdo a necesidades-->
+          <li class="nav-item me-auto">
+            <a class="btn btn-outline-success" href="/users/signup">Registro</a>
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

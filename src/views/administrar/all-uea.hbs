@@ -1,0 +1,102 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 62rem;">
+    <div class="card-body">
+      {{#if uea}}
+        {{#if user.horario}} <!--Se utiliza la condición de que si user.horario (Si tiene algo en horario 'user') existe, entonces cargara este bloque -->
+          <img
+          src="/pictures/sigeca_full.png"
+          class="img-fluid mt-3 mb-3"
+          alt="SIGECA"
+          width="440"
+          height="240"
+        />
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">
+                Clave
+              </th>
+              <th scope="col">
+                UEA
+              </th>
+              <th scope="col">Descripción</th>
+              <th scope="col">División</th>
+              <th scope="col">Tronco</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each uea}}
+              <tr>
+                <th>{{clave}}</th>
+                <td>{{uea}}</td>
+                <td>{{descripcion}}</td>
+                <td>{{division}}</td>
+                <td>{{tronco}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{else}}
+          <img
+          src="/pictures/sigeca_full.png"
+          class="img-fluid mt-3 mb-3"
+          alt="SIGECA"
+          width="440"
+          height="240"
+        />
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">
+                Clave
+              </th>
+              <th scope="col">
+                UEA
+              </th>
+              <th scope="col">Descripción</th>
+              <th scope="col">División</th>
+              <th scope="col">Tronco</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each uea}}
+              <tr>
+                <th>{{clave}}</th>
+                <td>{{uea}}</td>
+                <td>{{descripcion}}</td>
+                <td>{{division}}</td>
+                <td>{{tronco}}</td>
+                <td>
+                  <a href="/uea-edit/{{_id}}"class="btn btn-primary"><i
+                      class="fa-solid fa-pen-to-square"
+                    ></i>Editar</a>
+                  <form
+                    action="/delete-uea/{{_id}}?_method=DELETE"
+                    method="POST"
+                  >
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button class="btn btn-danger mt-3" type="submit">
+                      <i class="fa-solid fa-trash"></i>
+                      Eliminar
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+      {{else}}
+        <h3>No existen UEAS registradas</h3>
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="340"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

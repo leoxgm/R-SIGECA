@@ -1,0 +1,113 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 72rem;">
+    <div class="card-body">
+      {{#if usuario}}
+        {{#if user.horario}} <!--Se utiliza la condición de que si user.horario (Si tiene algo en horario 'user') existe, entonces cargara este bloque --> 
+          <img
+            src="/pictures/sigeca_full.png"
+            class="img-fluid mt-3 mb-3"
+            alt="SIGECA"
+            width="440"
+            height="240"
+          />
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Departamento</th>
+                <th scope="col">
+                  Número ecónomico
+                </th>
+                <th scope="col">
+                  Nombre
+                </th>
+                <th scope="col">Telefóno</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Horario</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each usuario}}
+                <tr>
+                  <th>{{departamento}}</th>
+                  <th>{{num_economic}}</th>
+                  <td>{{name}}</td>
+                  <td>{{telefono}}</td>
+                  <td>{{email}}</td>
+                  <td>{{horario}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          <img
+            src="/pictures/sigeca_full.png"
+            class="img-fluid mt-3 mb-3"
+            alt="SIGECA"
+            width="440"
+            height="240"
+          />
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Departamento</th>
+                <th scope="col">
+                  Número ecónomico
+                </th>
+                <th scope="col">
+                  Nombre
+                </th>
+                <th scope="col">Telefóno</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each usuario}}
+                <tr>
+                  <th>{{departamento}}</th>
+                  <th>{{num_economic}}</th>
+                  <td>{{name}}</td>
+                  <td>{{telefono}}</td>
+                  <td>{{email}}</td>
+                  <td>{{horario}}</td>
+                  <td>
+                    {{#if ../director}}
+                    <a href="/dashboard/profesor-edit/{{_id}}" class="btn btn-primary"><i
+                        class="fa-solid fa-pen-to-square"
+                      ></i> Editar</a>
+                    {{/if}}
+                    <a href="/dashboard/profesor-preferencia/{{_id}}" class="btn btn-primary mt-2"><i
+                        class="fa-solid fa-id-badge"
+                      ></i> Preferencias</a>
+                    {{#if ../director}}
+                    <form
+                      action="/dashboard/delete-profesor/{{_id}}?_method=DELETE"
+                      method="POST"
+                    >
+                      <input type="hidden" name="_method" value="DELETE" />
+                      <button class="btn btn-danger mt-2" type="submit">
+                        <i class="fa-solid fa-trash"></i>
+                        Eliminar
+                      </button>
+                    </form>
+                    {{/if}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/if}}
+      {{else}}
+        <h3>No existen profesores registrados</h3>
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="440"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

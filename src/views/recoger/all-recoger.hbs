@@ -1,0 +1,31 @@
+{{#each recoger}}
+    <div class="col-md-3">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{name}}
+                </h4>
+                <p><b>Matricula</b></p>
+                <p>{{matricula}}</p>
+                <p><b>Estado</b></p>
+                {{#if recoger}}
+                <p>Recogido</p>
+                {{else}}
+                <p>No recogido</p>
+                <form action="/recoger/abrir" method="POST">
+                    <button class="mt-4 btn btn-success w-100 btn-sm form-group" type="submit">
+                        Recoger
+                    </button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{else}}
+<div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead mx-auto">No tienes prestamos por recoger.</p>
+                <a href="/prestamos/nuevo-prestamo" class="btn btn-success btn-lg">Hacer un prestamo</a>
+            </div>
+        </div>
+{{/each}}

@@ -1,0 +1,131 @@
+<div class="container text-center">
+  <div class="card mx-auto mt-4" style="width: 42rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Nuevo Profesor</h5>
+      <img
+        src="/pictures/sigeca_full.png"
+        class="img-fluid mt-3 mb-3"
+        alt="SIGECA"
+        width="440"
+        height="240"
+      />
+      <form action="/users/signup" method="POST">
+        <div class="row g-2">
+          <div class="col-5">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control border-primary"
+                id="floatingNameProfesorInputGrid"
+                placeholder="Nombre"
+                value=""
+                name="name"
+              />
+              <label for="floatingNameProfesorInputGrid">Nombre</label>
+            </div>
+            <div class="form-floating mt-3">
+              <input
+                type="text"
+                class="form-control border-primary"
+                id="floatingNumEconomicoInputGrid"
+                placeholder="Número económico"
+                value=""
+                name="num_economic"
+              />
+              <label for="floatingNumEconomicoInputGrid">Número económico</label>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="form-floating">
+              <input
+                type="email"
+                class="form-control border-primary"
+                id="floatingProfesorInputGrid"
+                placeholder="Correo eléctronico"
+                value=""
+                name="email"
+              />
+              <label for="floatingProfesorInputGrid">Correo eléctronico</label>
+            </div>
+            <div class="form-floating mt-3">
+              <input
+                type="tel"
+                class="form-control border-primary"
+                id="floatingNumTelInputGrid"
+                placeholder="Número telefónico"
+                value=""
+                name="telefono"
+              />
+              <label for="floatingNumTelInputGrid">Número telefónico</label>
+            </div>
+          </div>
+          <div class="form-floating mt-3">
+            <input
+              type="password"
+              class="form-control border-primary"
+              id="floatingPassword"
+              placeholder="Password"
+              name="password"
+            />
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+          <div class="form-floating mt-3">
+            <input
+              type="password"
+              class="form-control border-primary"
+              id="floatingConfirmPassword"
+              placeholder="confirm_Password"
+              name="confirm_password"
+            />
+            <label for="floatingConfirmPassword">Confirmar contraseña</label>
+          </div>
+        </div>
+        <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating mt-3">
+              <input
+                type="time"
+                class="form-control border-primary"
+                id="floatingTime"
+                placeholder="Horario de contratación"
+                name="horario_inicio"
+              />
+              <label for="floatingTime">Horario de contratación</label>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating mt-3">
+              <input
+                type="time"
+                class="form-control border-primary"
+                id="floatingTimeFin"
+                placeholder="Horario de contratación"
+                name="horario_fin"
+              />
+              <label for="floatingTimeFin">Horario de contratación (Fin)</label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <select
+            class="form-select border-primary text-center"
+            aria-placeholder="Departamento"
+            name="departamento"
+          >
+            <option selected disabled>Departamento</option>
+            {{#each departamento}}
+              <option value="{{departamento}}">
+                {{departamento}}
+              </option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="mt-3 mb-3">
+          <button type="submit" class="btn btn-primary w-100">
+            Registro
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

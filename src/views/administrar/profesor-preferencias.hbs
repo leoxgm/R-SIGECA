@@ -1,0 +1,67 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 62rem;">
+    <div class="card-body">
+      {{#if listaPreferencias}}
+        <h5>Preferencias de {{num_economic}}</h5>
+        <img
+          src="/pictures/sigeca_full.png"
+          class="img-fluid mt-3 mb-3"
+          alt="SIGECA"
+          width="440"
+          height="240"
+        />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Clave</th>
+              <th scope="col">UEA</th>
+              <th scope="col">Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each listaPreferencias}}
+              <tr>
+                <th>{{clave}}</th>
+                <td>{{uea}}</td>
+                <td>{{description}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{#if user.departamento}}
+          <a
+            href="/dashboard"
+            class="btn btn-primary mt-3 g-2 me-3 w-25"
+          >Volver</a>
+        {{else}}
+          <a
+            href="/profesores"
+            class="btn btn-primary mt-3 g-2 me-3 w-25"
+          >Volver</a>
+        {{/if}}
+      {{else}}
+        <p>No existen preferencias registradas</p>
+        {{#if user.departamento}}
+          <a
+            href="/dashboard"
+            class="btn btn-primary mt-3 g-2 me-3 w-25"
+          >Volver</a>
+        {{else}}
+          <a
+            href="/profesores/nueva-preferencia"
+            class="btn btn-success mt-3 g-2 me-3"
+          >Nueva preferencia</a>
+          <a href="/profesores" class="btn btn-primary mt-3 g-2 me-3">Volver</a>
+          <br />
+        {{/if}}
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="340"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

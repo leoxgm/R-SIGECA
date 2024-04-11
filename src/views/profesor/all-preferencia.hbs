@@ -1,0 +1,50 @@
+<div class="container text-center mb-3">
+  <div class="card mx-auto mt-4" style="width: 62rem;">
+    <div class="card-body">
+      {{#if listaPreferencias}}
+        <h5>Mis preferencias</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Clave</th>
+              <th scope="col">UEA</th>
+              <th scope="col">Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each listaPreferencias}}
+              <tr>
+                <th>{{clave}}</th>
+                <td>{{uea}}</td>
+                <td>{{description}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <a href="/profesores" class="btn btn-primary mt-3 g-2 me-3 w-25">Volver</a>
+        <form
+          action="/profesores/delete-preferencia/{{user._id}}?_method=DELETE"
+          method="POST"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <button class="btn btn-danger mt-3 g-2 me-3 w-25" type="submit">
+            <i class="fa-solid fa-trash"></i>
+            Eliminar
+          </button>
+        </form>
+      {{else}}
+        <p>No existen preferencias registradas</p>
+        <a href="/profesores/nueva-preferencia" class="btn btn-success mt-3 g-2 me-3">Nueva preferencia</a>
+        <a href="/profesores" class="btn btn-primary mt-3 g-2 me-3">Volver</a>
+        <br>
+        <img
+          src="/pictures/error.png"
+          class="img-fluid mt-3 mb-3"
+          alt="ERROR"
+          width="340"
+          height="240"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>
