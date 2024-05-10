@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg py-0 navbar-light bg-light">
+<nav class="navbar navbar-expand-lg py-0 navbar-light bg-light justify-content-center" style="{margin:15px, display: flex}">
   <div class="container-fluid start-0">
     <a class="navbar-brand sticky-top" href="/">
       <img
-        src="https://www.comunicacionsocial.uam.mx/identidaduam/images/variacion6.jpg"
+        src="../pictures/conjunto-baseLer.png"
         alt="Logo"
-        width="240"
-        height="60"
-        class="d-inline-block align-text-top"
+        width="260"
+        height="65"
+        class="d-inline-block align-text-top m-3"
       />
     </a>
     <button
@@ -21,7 +21,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto text-center">
         {{#if user.horario}}
           <li class="nav-item dropdown">
             <a
@@ -119,14 +119,14 @@
             </ul>
           </li>
           <li class="nav-item me-auto">
-            <button class="ms-3 me-1 btn btn-outline-success" type="submit">
+            <button class="ms-3 me-1 btn btn-uam" type="submit">
               {{#with user}}
                 {{departamento}}
               {{/with}}
             </button>
           </li>
           <li class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <button class="ms-3 me-1 btn btn-outline-primary" type="submit">
+            <button class="ms-3 me-1 btn btn-uam" type="submit">
               {{#with user}}
                 {{division}}
               {{/with}}
@@ -246,24 +246,21 @@
             </ul>
           </li>
           <li class="nav-item me-auto">
-            <button class="ms-3 me-1 btn btn-outline-success" type="submit">
-              {{#with user}}
-                {{departamento}}
-              {{/with}}
-            </button>
-          </li>
-          <li class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <button class="ms-3 me-1 btn btn-outline-primary" type="submit">
-              {{#with user}}
-                {{division}}
-              {{/with}}
-            </button>
-          </li>
-          <li class="nav-item me-auto">
-            <a
-              class="ms-3 me-1 btn btn-outline-danger"
-              href="/users/logout"
-            >Cerrar sesión</a>
+              <button class="ms-3 me-1 btn btn-outline-uam" type="submit">
+                  {{#with user}}
+                      {{departamento}}
+                  {{/with}}
+              </button>
+              
+              <button class="ms-3 me-1 btn btn-outline-uam" type="submit">
+                  {{#with user}}
+                      {{division}}
+                  {{/with}}
+              </button>
+
+              <a class="ms-3 me-1 btn btn-outline-danger" type="submit" href="/users/logout">
+                      Cerrar sesión</a>
+              </button>
           </li>
         {{else if user.director}}
           <li class="nav-item me-auto">
@@ -280,8 +277,7 @@
             >{{user.director}}</button>
           </li>
           <li class="nav-item ms-auto">
-            <a class="ms-3 btn btn-outline-danger" href="/users/logout">Cerrar
-              sesión</a>
+            <a class="ms-3 btn btn-outline-danger" href="/users/logout">Cerrar sesión</a>
           </li>
         {{else}}
           <!-- Habilitar o deshabilitar de acuerdo a necesidades-->

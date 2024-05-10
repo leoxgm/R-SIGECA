@@ -1,36 +1,245 @@
 body {
-    /*
-    background: #cc2b5e;
-    background: -webkit-linear-gradient(to right, #753a88, #cc2b5e); 
-    background: linear-gradient(to right, #753a88, #cc2b5e); 
-    */
     background-image: url('../pictures/uamlerma.jpg');
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    /*padding-bottom: 20rem;*/
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* No se repite la imagen */
+    background-size: expand;
+    /* Redimensiona la imagen de fondo para cubrir todo el contenedor */
+    /* Define el color de fondo con transparencia */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Fondo blanco con 50% de transparencia */
     margin-bottom: 385px;
 
-}
-.logo{
-    width:50%;
 
 }
-.ingreso{
+
+.logo {
+    width: 50%;
+
+}
+
+.ingreso {
     background-color: #cdb4db;
 }
 
 
 ::placeholder {
-    text-align: center; 
- }
-.footer_uam{
-    position:fixed;
-    clear:both;
-    bottom:0px;
-    height:185px;
+    text-align: center;
+}
+
+.footer_uam {
+    position: fixed;
+    clear: both;
+    bottom: 0px;
+    height: 185px;
     width: 100%;
- }
-select{
+}
+
+select {
     border-radius: 50px;
+}
+
+/* Definición de la clase para el botón personalizado con el color especificado */
+.btn-uam {
+    color: #ffffff;
+    /* Color del texto */
+    background-color: #ad25a8;
+    /* Color de fondo */
+    border-color: #ad25a8;
+    /* Color del borde */
+}
+
+/* Estilo para el botón al pasar el mouse por encima */
+.btn-uam:hover {
+    background-color: #9a1fa0;
+    /* Color de fondo al pasar el mouse */
+    border-color: #9a1fa0;
+    /* Color del borde al pasar el mouse */
+    color: #ffffff;
+    /* Color del texto */
+}
+
+.btn-outline-uam {
+    color: #ad25a8;
+    /* Color del texto */
+    background-color: #ffffff;
+    /* Color de fondo */
+    border-color: #ad25a8;
+    /* Color del borde */
+}
+
+.btn-uam-nav {
+    color: #ad25a8;
+    /* Color del texto */
+    background-color: #ffffff;
+    /* Color de fondo */
+    border-color: #ad25a8;
+    /* Color del borde */
+}
+
+.btn-outline-uam:hover {
+    color: #ffffff;
+    /* Color del texto */
+    background-color: #ad25a8;
+    /* Color de fondo */
+    border-color: #ad25a8;
+    /* Color del borde */
+}
+
+/* Estilo para los botones en un grupo de botones */
+.btn-group .btn-uam {
+    color: #ffffff;
+    background-color: #ad25a8;
+    border-color: #ad25a8;
+}
+
+/* Estilo para los botones en un grupo de botones al pasar el mouse por encima */
+.btn-group .btn-uam:hover {
+    background-color: #9a1fa0;
+    border-color: #9a1fa0;
+    color: #ffffff;
+}
+
+/* Estilo para los botones de radio */
+.btn-uam:checked {
+    color: #ffffff;
+    background-color: #ad25a8;
+    border-color: #ad25a8;
+}
+
+/* Estilo para los botones de radio cuando están seleccionados */
+.btn-check:checked + .btn-outline-uam {
+    color: #ffffff;
+    background-color: #ad25a8;
+    border-color: #ad25a8;
+}
+
+/* Estilo para los botones de radio cuando están seleccionados al pasar el mouse por encima */
+.btn-check:checked + .btn-outline-uam:hover {
+    background-color: #9a1fa0;
+    border-color: #9a1fa0;
+    color: #ffffff;
+}
+
+/* Estilo para todos los campos de formulario */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="color"],
+input[type="checkbox"],
+input[type="radio"],
+select,
+textarea {
+    border: 1px solid #AD25A8 !important; /* Cambia el grosor y color del borde */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    /* Establece el box-shadow inicialmente como transparente */
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); 
+    transition: box-shadow 0.3s ease; /* Agrega una transición suave para el box-shadow */
+    /* Otros estilos según sea necesario */
+}
+
+/* Estilo para mostrar el box-shadow cuando el elemento está enfocado */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="color"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+select:focus,
+textarea:focus {
+    box-shadow: 0 0 0 0.25rem rgba(173, 37, 168, 0.25) !important; /* Cambia el box-shadow cuando el elemento está enfocado */
+}
+
+
+
+/* Estilo específico para select */
+select {
+    /* Aplica el color al fondo del select */
+    background-color: #AD25A8;
+    /* Cambia el color del texto dentro del select */
+    color: #ffffff;
+    /* Otros estilos según sea necesario */
+}
+
+/* Estilo específico para textarea */
+textarea {
+    /* Aplica el color al fondo del textarea */
+    background-color: #AD25A8;
+    /* Cambia el color del texto dentro del textarea */
+    color: #ffffff;
+    /* Otros estilos según sea necesario */
+}
+
+select option:checked {
+    background-color: #AD25A8 !important;
+    color: #ffffff !important;
+  }
+
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+
+}
+
+.navbar{
+    background-color: efd3ee !important;
+}
+
+
+/* Cambiar el color al pasar el mouse por encima de los elementos del navbar */
+.navbar-nav li.nav-item:hover .nav-link {
+    color: #AD25A8; /* Cambia el color del texto al pasar el mouse */
+    /* Otros estilos según sea necesario */
+}
+
+/* Cambiar el color de fondo al pasar el mouse por encima de los elementos del dropdown en el navbar */
+.navbar-nav .dropdown-menu li.nav-item:hover .dropdown-item {
+    background-color: #AD25A8 !important; /* Cambia el color de fondo al pasar el mouse */
+    /* Otros estilos según sea necesario */
+}
+
+
+
+/* Cambiar el color de resaltado */
+::selection {
+    background-color: #ad25a8;
+    color: #ffffff;
+}
+
+/* Cambiar el color de resaltado para el texto en los input */
+input::selection {
+    background-color: #ad25a8;
+    color: #ffffff;
+}
+
+/* Cambiar el color de resaltado para los textareas */
+textarea::selection {
+    background-color: #ad25a8;
+    color: #ffffff;
+}
+
+.dropdown-item.active,
+.dropdown-item:focus {
+    background-color: #ad25a8;
+    color: #ffffff;
 }
